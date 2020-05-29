@@ -38,6 +38,7 @@ public class BlockQueue {
         public void run() {
             try {
                 while (true) {
+                    // 消费者从阻塞队列获取数据
                     Integer element = (Integer) queue.take();
                     System.out.println("消费者 " + Thread.currentThread().getName() + " 正在消费数据 " + element);
                     Thread.sleep(1000);
@@ -63,6 +64,7 @@ public class BlockQueue {
                     Random random = new Random();
                     int i = random.nextInt(100);
                     System.out.println("生产者 " + Thread.currentThread().getName() + " 生产数据 " + i);
+                    // 生产者向阻塞队列增加数据
                     queue.put(i);
                     Thread.sleep(1000);
                 }

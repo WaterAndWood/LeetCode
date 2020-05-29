@@ -57,6 +57,7 @@ public class LockCondition {
                 int i = random.nextInt(100);
                 System.out.println("生产者 " + Thread.currentThread().getName() + " 生产数据 " + i);
                 list.add(Thread.currentThread().getName() + " 生产数据 " + i);
+                // 唤醒消费者
                 empty.signalAll();
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -89,6 +90,7 @@ public class LockCondition {
                 }
                 String str = list.remove(0);
                 System.out.println("消费者 " + Thread.currentThread().getName() + " 取出第一个元素为：" + str);
+                // 唤醒生产者
                 full.signalAll();
             } catch (InterruptedException e) {
                 e.printStackTrace();

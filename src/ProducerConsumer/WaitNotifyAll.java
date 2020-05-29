@@ -50,6 +50,7 @@ public class WaitNotifyAll {
                 int i = random.nextInt(100);
                 System.out.println("生产者 " + Thread.currentThread().getName() + " 生产数据 " + i);
                 lock.add(Thread.currentThread().getName() + " 生产数据 " + i);
+                // 唤醒消费者线程
                 lock.notifyAll();
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -78,6 +79,7 @@ public class WaitNotifyAll {
                     }
                     String str = lock.remove(0);
                     System.out.println("消费者 " + Thread.currentThread().getName() + " 取出第一个元素为：" + str);
+                    // 唤醒生产者线程
                     lock.notifyAll();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
