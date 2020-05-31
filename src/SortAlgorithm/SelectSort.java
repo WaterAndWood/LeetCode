@@ -4,35 +4,28 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- *
- * 插入排序：从小到大
- * 相邻位移动，有序队列后的第一个元素插入；保持前i-1是排序的
- *
- * @author Richa on 2020/5/31 21:31
- * @param
- * @return
- * @throws
- */
-public class InsertSort {
-    public static void insertSort(int [] array) {
+public class SelectSort {
+    public static void selectSort(int[] array) {
         if (array == null || array.length <= 1) {
             return;
         }
-        int temp;
         for (int i = 0; i < array.length - 1; i++) {
-            temp = array[i+1];
-            int j = i;
-            for(; j >= 0 && temp <= array[j] ; j--) {
-                array[j+1] = array[j];
+            int minIndex = i;
+            // 选出最小值索引
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[j] < array[minIndex]) {
+                    minIndex = j;
+                }
             }
-            array[j+1] = temp;
+            int temp = array[i];
+            array[i] = array[minIndex];
+            array[minIndex] = temp;
         }
     }
 
     public static void main(String[] args) {
         int[] array = {8, 9, 4, 7, 2, 3, 5, 1, 6, 0};
-        insertSort(array);
+        selectSort(array);
         List<Integer> list = Arrays.stream(array).boxed().collect(Collectors.toList());
         System.out.println(list);
     }
