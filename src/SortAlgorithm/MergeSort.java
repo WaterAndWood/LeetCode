@@ -13,7 +13,9 @@ public class MergeSort {
     public static void mergeSort(int[] array, int[] temp, int left, int right) {
         if (left < right) {
             int mid = (left + right) / 2;
+            // 左边归并排序，使得左子序列有序
             mergeSort(array, temp, left, mid);
+            // 右边归并排序，使得右子序列有序
             mergeSort(array, temp, mid + 1, right);
             merge(array, temp, left, mid + 1, right);
         }
