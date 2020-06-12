@@ -1,7 +1,14 @@
 package testCase;
 
+/**
+ *
+ * 其他包可以引用的数据结构，用作测试用例
+ *
+ * @author Richa
+ * @date 2020/6/11 21:29
+ */
 public class TreeNode {
-    // 其他包可以引用
+
     public int val;
     public TreeNode left = null;
     public TreeNode right = null;
