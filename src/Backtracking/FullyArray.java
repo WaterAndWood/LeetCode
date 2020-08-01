@@ -30,6 +30,7 @@ public class FullyArray {
                      List<List<Integer>> res) {
         // 回溯终止条件
         if (depth == len) {
+            // 值传递，需要拷贝
             res.add(new ArrayList<>(path));
             return;
         }
