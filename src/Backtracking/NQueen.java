@@ -7,7 +7,16 @@ import java.util.List;
  *
  * LeetCode 51: N 皇后
  * 主对角线：行号 - 列号 = 常数；副对角线：行号 + 列号 = 常数
- * 回溯算法：
+ * 回溯算法主流程：
+ * result = []
+ * def backtrack(路径， 选择列表):
+ *     if 满足结束条件:
+ *        result.add(路径)
+ *        return
+ *    for 选择 in 选择列表：
+ *        做选择
+ *        backtrack(路径，选择列表)
+ *        撤销选择
  *
  * @author Richa
  * @date 2020/8/1 10:12
