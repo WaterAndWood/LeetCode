@@ -19,6 +19,7 @@ public class BSTConvertDequeList {
 
     /**
      * 递归方法
+     * pre 前驱节点，cur 当前节点
      */
     public TreeNode treeToDoublyList1(TreeNode root) {
         if (root == null) {
