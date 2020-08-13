@@ -55,6 +55,46 @@ public class TraverseTree {
         }
     }
 
+    public void morrisPreOrder(TreeNode root) {
+        TreeNode cur = root, pre = null;
+        while (cur != null) {
+            /**
+             * 如果当前节点的left为空，输出，将其right作为当前节点
+             * right能作为当前节点，是因为当前节点的right指向已经被改变，指向后继节点。
+             * 返回当前节点的根节点
+             */
+            if (cur.left == null) {
+                System.out.print(cur.val);
+                System.out.print("->");
+                cur = cur.right;
+            } else {
+                pre = cur.left;
+                while (pre.right != null && pre.right != cur) {
+                    pre = pre.right;
+                }
+                /**
+                 * 如果前驱节点的右孩子为空，将它的右孩子设置为当前节点。
+                 * pre指向的是pre的根节点，输出
+                 * 当前节点更新为当前节点的左孩子
+                 */
+                if (pre.right == null) {
+                    pre.right = cur;
+                    System.out.print(cur.val);
+                    System.out.print("->");
+                    cur = cur.left;
+                } else {
+                    /**
+                     * 如果前驱节点的右孩子为当前节点，将它的右孩子重新设为空。当前节点更新为当前节点的右孩子。
+                     *
+                     */
+                    pre.right = null;
+                    cur = cur.right;
+                }
+
+            }
+        }
+    }
+
     /**
      *
      * 中序遍历：递归
@@ -94,6 +134,53 @@ public class TraverseTree {
                 System.out.print(temp.val);
                 System.out.print("->");
                 node = temp.right;
+            }
+        }
+    }
+
+    /**
+     * pre是前驱节点，会改变节点right的指向
+     *
+     */
+    public void morrisInOrder(TreeNode root) {
+        TreeNode cur = root, pre = null;
+        while (cur != null) {
+            /**
+             * 如果当前节点的left为空，输出，将其right作为当前节点
+             * right能作为当前节点，是因为当前节点的right指向已经被改变，指向后继节点。
+             * 后继节点在中序遍历中为当前节点的根（左根右）
+             */
+            if (cur.left == null) {
+                System.out.print(cur.val);
+                System.out.print("->");
+                cur = cur.right;
+            } else {
+                /**
+                 * 如果当前节点的左孩子不为空，在当前节点的左子树中找到当前节点在中序遍历下的前驱节点。
+                 *
+                 */
+                pre = cur.left;
+                /**
+                 * 当前节点是root，它的前驱节点是左子树的最右节点，并改变左子树最右节点的right指向当前节点
+                 *
+                 */
+                while (pre.right != null && pre.right != cur) {
+                    pre = pre.right;
+                }
+                if (pre.right == null) {
+                    pre.right = cur;
+                    cur = cur.left;
+                }
+                /**
+                 * 前驱节点right是当前节点，right设置为空，消除后加的指向关系，恢复树结构
+                 * 输出当前节点，开始遍历右节点
+                 */
+                if (pre.right == cur) {
+                    pre.right = null;
+                    System.out.print(cur.val);
+                    System.out.print("->");
+                    cur = cur.right;
+                }
             }
         }
     }
@@ -158,7 +245,16 @@ public class TraverseTree {
         root.right.left = new TreeNode(9);
         root.right.right = new TreeNode(11);
         TraverseTree traverseTree = new TraverseTree();
-        traverseTree.lastOrderTraverseLoop(root);
+//        traverseTree.preOrderTraverseRecursion(root);
+        traverseTree.preOrderTraverseLoop(root);
+        System.out.println();
+        traverseTree.morrisPreOrder(root);
+        System.out.println();
+//        traverseTree.inOrderTraverseRecursion(root);
+//        traverseTree.inOrderTraverseLoop(root);
+//        traverseTree.lastOrderTraverseRecursive(root);
+//        traverseTree.lastOrderTraverseLoop(root);
+//        traverseTree.morrisInOrder(root);
         System.out.println("遍历结束");
     }
 }
