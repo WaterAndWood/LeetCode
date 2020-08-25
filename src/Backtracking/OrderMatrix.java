@@ -38,6 +38,10 @@ public class OrderMatrix {
         }
         // 回溯算法也是一种深度搜索
         dfs(0, 0);
+        System.out.println(String.format("%.2f", max));
+        for (int i = 0; i < maxRelation.size(); i++) {
+            System.out.println((i + 1) + " " + maxRelation.get(i)[1]);
+        }
     }
     private static void dfs(int row, double count) {
         // 回溯终止条件
