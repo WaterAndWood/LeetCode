@@ -6,7 +6,7 @@ import java.util.LinkedList;
  * LeetCode 225: 队列实现栈操作
  * 
  * @author Richa
- * @date 2020/8/26 15:58
+ * @date 2020/8/26 16:58
  */
 public class MyStack {
     // 始终一个list空，一个list存元素，队尾元素是栈顶
