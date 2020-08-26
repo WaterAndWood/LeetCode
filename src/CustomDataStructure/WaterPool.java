@@ -20,7 +20,7 @@ import java.util.*;
  *
  * 最后的q行中，每行包含两个数字c[i] (1<=c[i]<=3)和v[i](1<=v[i]<=n)。其中c[i]表示操作类型(1,2或者3)。v[i]表示操作对应的蓄水池节点。
  *
- * 自建模拟树的数据结构：一种是利用HashSet的数组，一种是利用链表
+ * 自建模拟树的数据结构：一种是利用HashSet的数组，一种是利用链表；模拟递归操作
  *
  * @author Richa
  * @date 2020/8/8 14:51
@@ -40,13 +40,13 @@ class Node {
     }
 }
 public class WaterPool {
-    static HashSet<Integer>[] adj;
-    static boolean[] isFull;
 
     /**
      * HashSet数组实现树
      */
-    /*public static void main(String[] args) {
+    /*static HashSet<Integer>[] adj;
+    static boolean[] isFull;
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         // 0位置不使用，从1开始对应
@@ -83,6 +83,7 @@ public class WaterPool {
 
     public static void flood(int v) {
         isFull[v] = true;
+        // 大于v的是子节点
         for (int n : adj[v]) {
             if (n > v) {
                 flood(n);
@@ -92,6 +93,7 @@ public class WaterPool {
 
     public static void clear(int v) {
         isFull[v] = false;
+        // 小于v的是父节点
         for (int n : adj[v]) {
             if (n < v) {
                 clear(v);
@@ -105,13 +107,14 @@ public class WaterPool {
 
         Scanner sc = new Scanner(System.in);
         int m = sc.nextInt();
+        // 连接关系
         int[] a = new int[m];
         int[] b = new int[m];
         for (int i = 0; i < m - 1; i++) {
             a[i] = sc.nextInt();
             b[i] = sc.nextInt();
         }
-
+        // 操作
         int op = sc.nextInt();
         int[] c = new int[op];
         int[] v = new int[op];
@@ -124,6 +127,10 @@ public class WaterPool {
         }
 
         for (int i = 0; i < m - 1; i++) {
+            /**
+             * 连接默认小数的是大数的父节点
+             *
+             */
             int max = Math.max(a[i], b[i]);
             int min = Math.min(a[i], b[i]);
             map.get(max).parentList.add(min);
@@ -141,6 +148,10 @@ public class WaterPool {
         }
     }
 
+    /**
+     * 注入水，子节点都注入水
+     *
+     */
     static void freight(int v) {
         map.get(v).water = true;
         if (map.get(v).sonList.isEmpty()) {
@@ -152,6 +163,10 @@ public class WaterPool {
         }
     }
 
+    /**
+     * 清空水，父节点都清空
+     *
+     */
     static void clean(int v) {
         map.get(v).water = false;
         if (map.get(v).parentList.isEmpty()) {
