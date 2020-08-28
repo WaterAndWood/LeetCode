@@ -90,7 +90,7 @@ class BSTree {
     /**
      * 递归插入二叉树
      */
-    public TreeNode insertIntToBST(TreeNode node, int val) {
+    public TreeNode insertIntToBST(TreeNode root, int val) {
         if (root == null) {
             return new TreeNode(val);
         }
