@@ -32,7 +32,7 @@ public class StonesWeight {
             totalStone += stone;
         }
         int maxCapicity = totalStone / 2;
-        int[][] dp = new int[len + 1][totalStone + 1];
+        int[][] dp = new int[len + 1][maxCapicity + 1];
         for (int i = 1; i < len + 1; i++) {
             for (int j = 1; j < maxCapicity + 1; j++) {
                 if (j - stones[i - 1] < 0) {
