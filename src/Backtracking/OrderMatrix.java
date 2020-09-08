@@ -78,7 +78,7 @@ public class OrderMatrix {
 
                 dfs(row + 1, count + nums[row][i]);
 
-                tempRelation.remove(maxRelation.size() - 1);
+                tempRelation.remove(tempRelation.size() - 1);
                 visited[i] = false;
             }
         }

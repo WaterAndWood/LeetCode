@@ -22,7 +22,7 @@ public class FullyArray {
         boolean[] used = new boolean[len];
 
         List<Integer> path = new ArrayList<>();
-        dfs(nums,len, 0, path, used, res);
+        dfs(nums, len, 0, path, used, res);
         return res;
     }
 

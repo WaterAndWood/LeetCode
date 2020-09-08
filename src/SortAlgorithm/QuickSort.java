@@ -38,13 +38,13 @@ public class QuickSort {
             while(low < high && array[high] >= pivot) {
                 high--;
             }
-            // 队尾元素小于pivot，赋值给低端
+            // 队尾元素小于pivot，元素赋值给低端，array[high]已经小于pivot
             array[low] = array[high];
             // 从队首向后移动low指针
             while(low < high && array[low] <= pivot) {
                 low++;
             }
-            // 队首元素大于pivot，赋值给高端
+            // 队首元素大于pivot，赋值给高端，array[low]已经大于pivot，low现在的位置比开始的low大，比high小
             array[high] = array[low];
         }
         // low和high都是pivot基准的位置
@@ -84,11 +84,7 @@ public class QuickSort {
         arr[i] = arr[j];
         arr[j] = temp;
     }
-    
-    /**
-     * 
-     *
-     */
+
 
     public static void main(String[] args) {
         int[] array = {8, 9, 4, 7, 2, 3, 0, 1, 6, 5};
