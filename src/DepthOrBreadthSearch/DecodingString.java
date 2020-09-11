@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 /**
  *
- * LeetCode 394
+ * LeetCode 394：字符串解码
  * 辅助栈
  * 深度优先dfs（递归）
  *
@@ -13,7 +13,7 @@ import java.util.LinkedList;
  */
 public class DecodingString {
     /**
-     * 辅助栈的入栈条件[ 和出栈条件]
+     * 辅助栈的入栈条件[和出栈条件]
      * 3[a2[c]] -> 3[acc] -> accaccacc
      *
      */

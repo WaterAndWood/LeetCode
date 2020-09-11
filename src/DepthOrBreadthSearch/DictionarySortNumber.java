@@ -4,9 +4,9 @@ import java.util.*;
 
 /**
  *
- * LeetCode 386:
+ * LeetCode 386: 字典序排数
  * N叉树的前序遍历dfs或者广度搜索优先遍历10叉树
- * LeetCode 440:
+ * LeetCode 440: 字典序的第K小数字
  * 计算两个前缀之间的个数累加
  *
  * @author Richa
