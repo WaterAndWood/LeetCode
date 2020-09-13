@@ -19,15 +19,15 @@ public class MiddleNodeList {
         }
         ListNode slow = head;
         ListNode fast = head;
-        // 返回第二个中间节点
+        // 偶数个节点时返回第二个中间节点
         while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
         }
-        // 返回第一个中间节点
+        // 偶数个节点时返回第一个中间节点
 //        while (fast.next != null && fast.next.next != null) {
 //            slow = slow.next;
-//            fast = fast.next;
+//            fast = fast.next.next;
 //        }
         return slow;
     }
