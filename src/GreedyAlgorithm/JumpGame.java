@@ -20,7 +20,7 @@ public class JumpGame {
         }
 
         int len = nums.length;
-        // 当前索引起跳后组员位置
+        // 当前索引起跳后最远位置
         int range = 0;
         for (int i = 0; i < len; i++) {
             // 索引i大于range，表示该索引无法达到，其后的索引均无法达到
@@ -67,6 +67,7 @@ public class JumpGame {
         for (int i = 0; i < nums.length - 1; i++) {
             // 未到达边界，还在前一跳的范围内，记录此范围内可以到达的最远位置
             maxPosition = Math.max(maxPosition, i + nums[i]);
+            // 到达上一跳的边界
             if (i == end) {
                 // 向后跳
                 end = maxPosition;
