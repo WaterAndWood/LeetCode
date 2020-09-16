@@ -1,7 +1,7 @@
 package StringAndChar;
 
 /**
- * LeetCode
+ * LeetCode：1544
  * 整理大小写的字符串，两个相邻字符 s[i] 和 s[i + 1] 不会同时满足下述条件：
  * 0 <= i <= s.length - 2
  * s[i] 是小写字符，但 s[i + 1] 是相同的大写字符；反之亦然 。
