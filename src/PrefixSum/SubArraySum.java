@@ -62,7 +62,7 @@ public class SubArraySum {
     }
 
     /**
-     * 不重叠，所以在遍历满足条件时，重置sum和map
+     * 不重叠，所以在遍历满足条件时，重置sum 和map
      *
      */
     public int maxNonOverlapping(int[] nums, int target) {

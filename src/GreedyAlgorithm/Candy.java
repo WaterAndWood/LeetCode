@@ -52,8 +52,9 @@ public class Candy {
         boolean flag = true;
 
         /**
-         * num[i] <= num[i + 1]是关键，如果num[i]大于num[i + 1]，就已满足条件，不需要修改
-         * num[i]
+         * 条件是：得分高的糖多
+         * num[i] <= num[i + 1]是关键，如果num[i] 大于num[i + 1]，就满足条件，糖已经多了，不需要修改
+         * num[i] <= num[i - 1]是关键，如果num[i] 大于num[i + 1]，就满足条件，糖已经多了，不需要修改
          */
         while (flag) {
             flag = false;
