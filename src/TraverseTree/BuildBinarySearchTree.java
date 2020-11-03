@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  *
- * LeetCode 95: 生成搜索二叉树
+ * LeetCode 95: 不同的搜索二叉树
  * root左子树小于root，root右子树大于root，以root分割1~n
  * 递归分割，缩短数组长度
  *
