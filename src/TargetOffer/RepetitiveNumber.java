@@ -46,6 +46,8 @@ public class RepetitiveNumber {
                 int temp = nums[nums[i]];
                 nums[nums[i]] = nums[i];
                 nums[i] = temp;
+                // 交换之后，从交换位置开始判断
+                i--;
             }
         }
         return -1;
