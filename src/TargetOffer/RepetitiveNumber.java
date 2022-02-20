@@ -5,7 +5,7 @@ import java.util.Set;
 
 /**
  *
- * LeetCode3: 数组中重复的数字
+ * Offer3: 数组中重复的数字
  * 排序算法需要时间复杂度O(nlogn)
  *
  * @author Richa
