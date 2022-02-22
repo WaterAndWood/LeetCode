@@ -5,7 +5,7 @@ import java.util.LinkedList;
 /**
  *
  * Offer9: 用两个栈实现队列
- * stack2不为空，栈顶是先进入的元素，可以弹出；stack为空，把stack1的元素弹出压入stack2
+ * stack2不为空，栈顶是先进入的元素，可以弹出；stack2为空，把stack1的元素弹出压入stack2
  *
  * @author Richa
  * @date 2022/2/20 19:59
