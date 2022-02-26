@@ -1,5 +1,6 @@
 LeetCode.iml
 .idea/
+out/
 ### Java template
 # Compiled class file
 *.class

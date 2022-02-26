@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /**
  *
- * 计数排序：从小到大
+ * 计数排序/桶排序：从小到大
  *
  * @author Richa
  * @date 2020/5/31 22:44

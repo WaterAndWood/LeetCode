@@ -4,6 +4,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ *
+ * 选择排序：每一次从待排序的数据元素中选出最小（或最大）的一个元素，存放在序列的起始位置
+ * 
+ * @author Richa
+ * @date 2022/2/23 23:14
+ */
 public class SelectSort {
     public static void selectSort(int[] array) {
         if (array == null || array.length <= 1) {
