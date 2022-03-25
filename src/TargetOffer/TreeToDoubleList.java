@@ -17,7 +17,7 @@ public class TreeToDoubleList {
     TreeNode pre, head;
     public TreeNode treeToDoubleList(TreeNode root) {
         if (root == null) {
-            return null;
+            return root;
         }
         dfs(root);
         head.left = pre;
@@ -55,7 +55,7 @@ public class TreeToDoubleList {
      */
     public TreeNode treeNodeToDoubleList(TreeNode root) {
         if (root == null) {
-            return null;
+            return root;
         }
         TreeNode head = null, listLastNode = null;
         LinkedList<TreeNode> stack = new LinkedList<>();
