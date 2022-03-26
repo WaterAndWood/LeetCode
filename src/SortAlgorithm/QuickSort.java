@@ -56,7 +56,7 @@ public class QuickSort {
      * 使用交换的快排
      *
      */
-    public  void quickSortWithSwap(int[] arr, int left, int right) {
+    public void quickSortWithSwap(int[] arr, int left, int right) {
         if (left < right) {
             int pivot = partitionWithSwap(arr, left, right);
             quickSortWithSwap(arr, left, pivot - 1);
@@ -89,8 +89,8 @@ public class QuickSort {
     public static void main(String[] args) {
         int[] array = {8, 9, 4, 7, 2, 3, 0, 1, 6, 5};
         QuickSort quickSort = new QuickSort();
-        quickSort.quickSort(array, 0, array.length - 1);
-        //quickSort.quickSortWithSwap(array, 0, array.length - 1);
+//        quickSort.quickSort(array, 0, array.length - 1);
+        quickSort.quickSortWithSwap(array, 0, array.length - 1);
         System.out.println(Arrays.toString(array));
     }
 }
