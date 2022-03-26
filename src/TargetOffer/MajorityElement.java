@@ -8,6 +8,7 @@ package TargetOffer;
 public class MajorityElement {
     /**
      * 摩尔投票法
+     * 时间复杂度：O(N)
      */
     public int majorNumber(int[] nums) {
         if (nums == null || nums.length == 0) {
@@ -35,6 +36,7 @@ public class MajorityElement {
         return count > nums.length / 2 ? x : 0;
     }
 
+    // 时间复杂度：O(N)
     public int majorNumberSort(int[] nums) {
         if (nums == null || nums.length == 0) {
             return 0;
