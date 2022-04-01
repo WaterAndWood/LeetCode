@@ -25,7 +25,7 @@ public class QuickSort {
     public void quickSort(int[] array, int low, int high) {
         if (low < high) {
             int pivot = partition(array, low, high);
-            quickSort(array, low, pivot);
+            quickSort(array, low, pivot - 1);
             quickSort(array, pivot + 1, high);
         }
     }
@@ -52,10 +52,6 @@ public class QuickSort {
         return low;
     }
 
-    /**
-     * 使用交换的快排
-     *
-     */
     public void quickSortWithSwap(int[] arr, int left, int right) {
         if (left < right) {
             int pivot = partitionWithSwap(arr, left, right);
@@ -67,7 +63,7 @@ public class QuickSort {
     public static int partitionWithSwap(int[] arr, int left, int right) {
         // 最右边选择主元
         int x = arr[right];
-        // 小于主元的元素中最右的元素
+        // p指向小于主元的元素中最右的元素
         int p = left - 1;
         for (int i = left; i < right; i++) {
             if (arr[i] <= x) {
@@ -89,8 +85,8 @@ public class QuickSort {
     public static void main(String[] args) {
         int[] array = {8, 9, 4, 7, 2, 3, 0, 1, 6, 5};
         QuickSort quickSort = new QuickSort();
-//        quickSort.quickSort(array, 0, array.length - 1);
-        quickSort.quickSortWithSwap(array, 0, array.length - 1);
+        quickSort.quickSort(array, 0, array.length - 1);
+//        quickSort.quickSortWithSwap(array, 0, array.length - 1);
         System.out.println(Arrays.toString(array));
     }
 }

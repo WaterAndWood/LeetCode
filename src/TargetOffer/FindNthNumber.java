@@ -30,5 +30,5 @@ public class FindNthNumber {
         // 在某个数字中的位数
         return Long.toString(num).charAt((n - 1) % digit) - '0';
     }
-    
+
 }
