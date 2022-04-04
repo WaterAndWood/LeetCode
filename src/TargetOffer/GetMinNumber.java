@@ -78,6 +78,12 @@ public class GetMinNumber {
     private void swap(String[] strs, int i, int j) {
         String temp = strs[i];
         strs[i] = strs[j];
-        strs[j] = strs[i];
+        strs[j] = temp;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = new int[]{3, 30, 34, 5, 9};
+        GetMinNumber getMinNumber = new GetMinNumber();
+        getMinNumber.minNumber(nums);
     }
 }
