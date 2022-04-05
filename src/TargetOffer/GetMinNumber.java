@@ -71,7 +71,7 @@ public class GetMinNumber {
                 swap(strs, p, i);
             }
         }
-        swap(strs, p + 1, right);
+        swap(strs, p + 1, pivot);
         return p + 1;
     }
 
