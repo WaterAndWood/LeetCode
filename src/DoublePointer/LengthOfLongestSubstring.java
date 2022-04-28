@@ -55,7 +55,7 @@ public class LengthOfLongestSubstring {
         for (int end = 0, start = 0; end < n; end++) {
             char ch = s.charAt(end);
             /**
-             * map中包含ch，需要从上一个ch处重新截取子串
+             * map中包含ch，需要从上一个ch处重新截取子串，截取要从ch后一位开始，所以end+1
              * 遇到[start, end]区间内字符相同的情况，字符作为key，获取value（位置）
              * 更新start，使得更新后[start, end]内不存在重复字符
              */
