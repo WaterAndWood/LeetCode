@@ -5,6 +5,8 @@ import java.util.*;
 /**
  *
  * LeetCode 17: 电话号码的字母组合
+ * 当出现组合的字眼时，首先反应使用回溯
+ * 本质是在搜索一个递归树
  * 
  * @author Richa
  * @date 2020/9/11 22:54
@@ -48,6 +50,74 @@ public class PhoneNumber {
             }
         }
     }
+
+    /**
+     * 回溯（深度优先遍历搜索所有解）
+     * liweiwei
+     */
+    public List<String> letterCombine(String digits) {
+        List<String> res = new ArrayList<>();
+        if (digits == null || digits.length() == 0) {
+            return res;
+        }
+
+        /**
+         * 映射数字和字母，index=0对应数字2
+         */
+        String[] digitMap = {"abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+        findCombinations(digits, digitMap, 0, "", res);
+        return res;
+    }
+
+    /**
+     *
+     * @param digits 原始字符串
+     * @param digitMap 映射关系
+     * @param start 从原始字符串第几位开始搜索
+     * @param pre 已经得到的字符串
+     */
+    private void findCombinations(String digits, String[] digitMap, int start, String pre, List<String> res) {
+        if (start == digits.length()) {
+            res.add(pre);
+            return;
+        }
+        String number = digitMap[digits.charAt(start) - '2'];
+        for (int i = 0; i < number.length(); i++) {
+            /**
+             * 字符追加到后面是新建一个字符串，不需要显式回溯
+             */
+            findCombinations(digits, digitMap, start + 1, pre + number.charAt(i), res);
+        }
+    }
+
+    /**
+     * 广度优先搜索
+     */
+    public List<String> findCombinationBfs(String digits) {
+        List<String> res = new ArrayList<>();
+        if (digits == null || digits.length() == 0) {
+            return res;
+        }
+
+        String[] digitMap = {"abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+        res.add("");
+        /**
+         * 新的一轮是在上一轮的基础上追加
+         */
+        for (int i = 0; i < digits.length(); i++) {
+            int num = digits.charAt(i) - '2';
+            String strList = digitMap[num];
+            List<String> cur = new ArrayList<>();
+            for (String s : res) {
+                for (char c : strList.toCharArray()) {
+                    cur.add(s + c);
+                }
+            }
+            res = cur;
+        }
+        return res;
+    }
+
 
     public static void main(String[] args) {
         PhoneNumber pn = new PhoneNumber();
