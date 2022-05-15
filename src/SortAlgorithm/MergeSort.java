@@ -77,8 +77,8 @@ public class MergeSort {
 
     public static void main(String[] args) {
         int[] array = {8, 9, 4, 7, 2, 3, 5, 1, 6, 0};
-//        mergeSort(array, new int[array.length], 0, array.length - 1);
-        int[] arrayWithCopy = mergeSortWithCopy(array);
-        System.out.println(Arrays.toString(arrayWithCopy));
+        mergeSort(array, new int[array.length], 0, array.length - 1);
+//        int[] arrayWithCopy = mergeSortWithCopy(array);
+        System.out.println(Arrays.toString(array));
     }
 }

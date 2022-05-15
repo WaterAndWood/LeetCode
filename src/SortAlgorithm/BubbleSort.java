@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 /**
  *
  * 冒泡排序：从小到大
+ * 外层循环每一次经过两两比较，把每一轮未排定部分最大的元素放到了数组的末尾，数组末尾是排好序的部分
+ * 内层循环没有交换，提前检测到数组有序，结束排序
  *
  * @author Richa
  * @date 2020/5/29 0:00
@@ -16,9 +18,10 @@ public class BubbleSort {
         if (array == null || array.length <= 1) {
             return;
         }
-        // 提前终止排序
-        boolean flag = false;
+
         for (int i = 0; i < array.length; i++) {
+            // 提前终止排序
+            boolean flag = false;
             for (int j = 0; j < array.length - 1 - i; j++) {
                 if (array[j] >= array[j + 1]) {
                     int temp = array[j + 1];

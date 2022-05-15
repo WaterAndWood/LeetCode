@@ -57,27 +57,28 @@ public class BSTConvertDequeList {
         }
         Deque<TreeNode> stack = new ArrayDeque<>();
         TreeNode head = null;
-        TreeNode last = null;
+        TreeNode pre = null;
         TreeNode cur = root;
         while (cur != null || !stack.isEmpty()) {
-            while (cur != null) {
-                stack.push(cur);
-                cur = cur.left;
-            }
-            cur = stack.pop();
-            if (head == null) {
-                head = cur;
-            } else {
-                // last起连接作用
-                last.right = cur;
-                cur.left = last;
-            }
-            last = cur;
-            cur = cur.right;
+           if (cur != null) {
+               stack.push(cur);
+               cur = cur.left;
+           } else {
+               cur = stack.pop();
+               // 相当于中序遍历中对cur的操作
+               if (pre != null) {
+                   pre.right = cur;
+                   cur.left = pre;
+               } else {
+                   head = cur;
+               }
+               pre = cur;
+               cur = cur.right;
+           }
         }
         // 首尾相接，形成循环双向列表
-        last.right = head;
-        head.left = last;
+        pre.right = head;
+        head.left = pre;
         return head;
     }
 }

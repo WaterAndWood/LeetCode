@@ -19,14 +19,15 @@ public class InsertSort {
         if (array == null || array.length <= 1) {
             return;
         }
-        int temp;
-        for (int i = 0; i < array.length - 1; i++) {
-            temp = array[i+1];
+        for (int i = 1; i < array.length; i++) {
+            int temp = array[i];
             int j = i;
-            for(; j >= 0 && temp <= array[j] ; j--) {
-                array[j+1] = array[j];
+            // 找比array[i]该插入的位置
+            while(j > 0 && array[j - 1] > temp) {
+                array[j] = array[j - 1];
+                j--;
             }
-            array[j+1] = temp;
+            array[j] = temp;
         }
     }
 

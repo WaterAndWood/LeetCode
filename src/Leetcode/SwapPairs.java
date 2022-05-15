@@ -1,4 +1,4 @@
-package TraverseTree;
+package Leetcode;
 
 import testCase.ListNode;
 

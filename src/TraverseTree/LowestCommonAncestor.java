@@ -10,7 +10,7 @@ import testCase.TreeNode;
  * 2. p = root, 且q 在root 的左子树或者右子树
  * 3. q = root, 且p 在root 的左子树或者右子树
  *
- * 递归终止条件：越过叶节点返回null，当root 等于p, q 返回root
+ * 递归终止条件：越过叶节点返回null；当root 等于p, q 返回root
  * 递归左子节点，返回left；递归右子节点，返回right
  *
  * 返回值判断：

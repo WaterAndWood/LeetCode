@@ -24,9 +24,9 @@ import java.util.Arrays;
 public class QuickSort {
     public void quickSort(int[] array, int low, int high) {
         if (low < high) {
-            int pivot = partition(array, low, high);
-            quickSort(array, low, pivot - 1);
-            quickSort(array, pivot + 1, high);
+            int pivotIndex = partition(array, low, high);
+            quickSort(array, low, pivotIndex - 1);
+            quickSort(array, pivotIndex + 1, high);
         }
     }
 
@@ -54,9 +54,9 @@ public class QuickSort {
 
     public void quickSortWithSwap(int[] arr, int left, int right) {
         if (left < right) {
-            int pivot = partitionWithSwap(arr, left, right);
-            quickSortWithSwap(arr, left, pivot - 1);
-            quickSortWithSwap(arr, pivot + 1, right);
+            int pivotIndex = partitionWithSwap(arr, left, right);
+            quickSortWithSwap(arr, left, pivotIndex - 1);
+            quickSortWithSwap(arr, pivotIndex + 1, right);
         }
     }
     
@@ -68,6 +68,7 @@ public class QuickSort {
         for (int i = left; i < right; i++) {
             if (arr[i] <= x) {
                 p++;
+                // 把小于x的放到p前，大于x的在p后
                 swap(arr, p, i);
             }
         }

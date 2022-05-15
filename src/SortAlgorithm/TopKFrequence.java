@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  *
- * LeetCode 347: 前K 个元素
+ * LeetCode 347: 前K个高频元素
  * 
  * @author Richa
  * @date 2020/9/8 14:49
@@ -20,7 +20,7 @@ public class TopKFrequence {
             map.put(i, map.getOrDefault(i, 0) + 1);
         }
 
-        // 小顶堆：排序按照数字出现次数，不能按照数字本身的大小排序
+        // 小顶堆：排序按照数字出现次数，不能按照数字本身的大小排序，需要重写Comparator
         Queue<Integer> queue = new PriorityQueue<>(new Comparator<Integer>() {
             @Override
             public int compare(Integer a, Integer b) {
