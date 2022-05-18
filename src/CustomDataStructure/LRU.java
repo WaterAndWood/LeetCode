@@ -6,8 +6,7 @@ import java.util.Map;
 
 /**
  *
- * LeetCode 146
- * LRU 缓存机制实现
+ * LeetCode 146：LRU缓存
  * 获取数据 get(key) - 如果关键字 (key) 存在于缓存中，则获取关键字的值（总是正数），否则返回 -1。
  * 写入数据 put(key, value) - 如果关键字已经存在，则变更其数据值；如果关键字不存在，则插入该组「关键字/值」。
  * 当缓存容量达到上限时，它应该在写入新数据之前删除最久未使用的数据值，从而为新的数据值留出空间。
@@ -46,6 +45,7 @@ import java.util.Map;
         if (map.containsKey(key)) {
             ListNode node = map.get(key);
             int value = node.value;
+            // 使用LinkedList，在remove时是O(n)复杂度
             list.remove(node);
             // list开头是最近使用的节点
             list.offerFirst(node);
@@ -75,8 +75,14 @@ import java.util.Map;
     }
 
 }*/
+
+/**
+ * 实现删除操作的O(1)时间复杂度，需要指针定位到要删除的元素，将元素用对象包装指针访问
+ * 首尾设置哨兵节点方便访问头尾
+ * get或者put都算是使用
+ */
 public class LRU {
-    // 直接存取的哈希表
+    // 直接存取的哈希表，key是ListNode的key
     private Map<Integer, ListNode> map;
     // 自定义双向列表
     private class ListNode {
@@ -152,6 +158,7 @@ public class LRU {
                 map.remove(removeTail.key);
             }
             ListNode newNode = new ListNode(key, value);
+            // 新的ListNode只添加到链表头，不需要moveToHead
             addNodeToListHead(newNode);
             map.put(key, newNode);
         }
