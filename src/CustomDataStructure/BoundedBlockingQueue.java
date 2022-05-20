@@ -16,7 +16,7 @@ public class BoundedBlockingQueue {
     private volatile int capicity;
     private LinkedList<Integer> list;
     // 可重入锁和消费者以及生产者
-    private ReentrantLock lock;
+    private ReentrantLock lock = new ReentrantLock();
     Condition producer = lock.newCondition();
     Condition consumer = lock.newCondition();
 
@@ -52,7 +52,7 @@ public class BoundedBlockingQueue {
             while (list.size() == 0) {
                 consumer.await();
             }
-            int ans = list.pollLast();
+            int ans = list.poll();
             producer.signal();
             return ans;
         } finally {
@@ -71,5 +71,10 @@ public class BoundedBlockingQueue {
         } finally {
             lock.unlock();
         }
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        BoundedBlockingQueue queue = new BoundedBlockingQueue(10);
+        queue.enqueue(1);
     }
 }
