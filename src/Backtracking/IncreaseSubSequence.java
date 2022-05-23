@@ -8,6 +8,7 @@ import java.util.Set;
 /**
  *
  * LeetCode 491: 递增子序列
+ * 子序列中元素的相对顺序与数组中相对顺序一致
  *
  * @author Richa
  * @date 2020/8/2 18:59

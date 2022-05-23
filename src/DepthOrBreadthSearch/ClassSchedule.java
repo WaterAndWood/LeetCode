@@ -55,54 +55,55 @@ public class ClassSchedule {
      */
     // 表示图的邻接表
     List<List<Integer>> edges;
-    // 顶点的状态：0，1，2
-    int[] visited;
-    boolean valid = true;
+
     // 每个顶点的入度数组
     int[] indeg;
     public boolean canFinishDFS(int numcourses, int[][] prerequisites) {
         // 构建邻接表存储prerequisites图结构
         edges = new ArrayList<>();
         for (int i = 0; i < numcourses; i++) {
-            edges.add(new ArrayList<Integer>());
+            edges.add(new ArrayList<>());
         }
         for (int[] arr : prerequisites) {
             // arr[1]出发到arr[0]，arr[1] -> arr[0]
             edges.get(arr[1]).add(arr[0]);
         }
-        visited = new int[numcourses];
+        /**
+         * 顶点的状态：0, -1, 1
+         * 0: 未被其他DFS访问
+         * -1：被其他节点启动的DFS访问
+         * 1：被当前节点的DFS访问到
+         */
+        int[] visited = new int[numcourses];
         // dfs递归该课的先修课路径上是否存在回路
-        for (int i = 0; i < numcourses && valid; i++) {
-            // 递归未访问过的顶点
-            if (visited[i] == 0) {
-                dfs(i);
+        for (int i = 0; i < numcourses; i++) {
+            if (!dfs(edges, visited, i)) {
+                return false;
             }
         }
-        return valid;
+        return true;
     }
 
-    public void dfs(int u) {
-        // 递归当前节点的相邻节点，状态更新为1
-        visited[u] = 1;
-        for (int v : edges.get(u)) {
-            /**
-             * 相邻节点状态0，继续递归
-             * 相邻节点状态1，出现环
-             * 相邻节点状态2，无需递归已是拓扑排序
-             *
-             */
-            if (visited[v] == 0) {
-                dfs(v);
-                if (!valid) {
-                    return;
-                }
-            } else if (visited[v] == 1) {
-                valid = false;
-                return;
+    private boolean dfs(List<List<Integer>> edges, int[] visited, int i) {
+        // 等于1说明被本轮DFS节点i第2次访问到，说明有环
+        if (visited[i] == 1) {
+            return false;
+        }
+        // 等于-1说明被其他节点访问过，不需要再次访问
+        if (visited[i] == -1) {
+            return true;
+        }
+        // 本轮dfs访问置为1
+        visited[i] = 1;
+        // 访问节点i的相邻节点j
+        for (Integer j : edges.get(i)) {
+            if (!dfs(edges, visited, j)) {
+                return false;
             }
         }
-        // 递归当前节点结束，状态更新为2
-        visited[u] = 2;
+        // 当前节点的相邻节点访问完没有环，置为-1，返回true
+        visited[i] = -1;
+        return true;
     }
 
     public boolean canFinishBFS(int numcourses, int[][] prerequisites) {

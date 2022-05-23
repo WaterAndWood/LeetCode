@@ -53,7 +53,7 @@ public class FindMedianSortedArrays {
         
         while (true) {
             /**
-             * 如果一个数组为空，说明该数组元祖都被排除，返回另一个数组第k小的元素
+             * 如果一个数组为空，说明该数组元素都被排除，返回另一个数组第k小的元素
              */
             if (index1 == len1) {
                 return nums2[index2 + k - 1];

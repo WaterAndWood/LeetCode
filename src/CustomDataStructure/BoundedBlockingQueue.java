@@ -35,7 +35,7 @@ public class BoundedBlockingQueue {
             while (list.size() >= capicity) {
                 producer.await();
             }
-            list.addFirst(element);
+            list.add(element);
             consumer.signal();
         } finally {
             lock.unlock();

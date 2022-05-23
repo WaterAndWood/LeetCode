@@ -22,7 +22,7 @@ import java.util.List;
  * @date 2020/8/1 10:12
  */
 public class NQueen {
-    // 列方向
+    // 存放每一列皇后所在的行
     int[] rows;
     // 副对角线方向 y = x + a
     int[] secondary;

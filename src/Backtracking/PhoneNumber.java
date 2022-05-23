@@ -41,12 +41,12 @@ public class PhoneNumber {
             String number = phone.get(firstDigit);
             for (int i = 0; i < number.length(); i++) {
                 // 数字对应字符串的字符，每个字符后面加上下一个数字对应字符串的字符
-                String letter = number.substring(i, i + 1);
+                char letter = number.charAt(i);
                 sb.append(letter);
                 traceBack(sb, digits.substring(1), ans);
                 int len = sb.length();
                 // 回溯，删除之前加入的letter
-                sb.delete(len - 1, len);
+                sb.deleteCharAt(sb.length() - 1);
             }
         }
     }

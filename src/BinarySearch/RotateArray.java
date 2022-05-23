@@ -2,7 +2,7 @@ package BinarySearch;
 
 /**
  *
- * 剑指offer: 旋转数组的最小元素
+ * 剑指offer11: 旋转数组的最小元素
  * 原来的递增数组旋转后是两个递增数组，最小值是分界处，使用二分法处理
  *
  * @author Richa
@@ -14,10 +14,10 @@ public class RotateArray {
         while (low < high) {
             int mid = low + (high - low) / 2;
             if (numbers[mid] > numbers[high]) {
-                // 在旋转点的左边
+                // mid在旋转点的左边
                 low = mid + 1;
             } else if (numbers[mid] < numbers[high]) {
-                // 在旋转点的右边
+                // mid在旋转点的右边
                 high = mid;
             } else {
                 // mid和high相等，忽略右端点
