@@ -36,7 +36,7 @@ public class DecodingString {
                 }
                 res = new StringBuilder(resStack.pollLast() + temp);
             } else if (ch >= '0' && ch <= '9') {
-                multi = 10 * multi + Integer.parseInt(String.valueOf(ch));
+                multi = 10 * multi + (ch - '0');
             } else {
                 res.append(ch);
             }

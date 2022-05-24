@@ -6,7 +6,8 @@ import java.util.List;
 
 /**
  *
- * Offer9： 两个队列实现栈
+ * Offer9： 两个栈实现队列
+ * 扩展：两个队列实现栈
  * 一个List始终保持空，将有元素的队列的最后的元素之前的元素移入
  * remove操作会改变size
  *

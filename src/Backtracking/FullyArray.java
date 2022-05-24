@@ -44,6 +44,7 @@ public class FullyArray {
         }
     }
 
+    // 输出不重复的全排列
     public List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         if (nums == null || nums.length == 0) {
@@ -67,13 +68,14 @@ public class FullyArray {
             if (used[i]) {
                 continue;
             }
-            if (i > 0 && nums[i] == nums[i-1] && !used[i]) {
-                used[i] = true;
-                path.add(nums[i]);
-                dfsUnique(nums, len, depth + 1, used, path, res);
-                used[i] = false;
-                path.removeLast();
+            if (i > 0 && nums[i] == nums[i-1] && !used[i - 1]) {
+                continue;
             }
+            used[i] = true;
+            path.add(nums[i]);
+            dfsUnique(nums, len, depth + 1, used, path, res);
+            used[i] = false;
+            path.removeLast();
         }
     }
 

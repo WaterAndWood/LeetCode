@@ -92,10 +92,11 @@ public class DictionarySortNumber {
     }
 
     /**
+     * 以数字 i 开头的所有数字串 按字典序一定 排在以数字 i+1 开头的所有数字串的前面
      * 计算前缀之间小于n的数字的个数，first和last是两个前缀的起点
-     *
+     * first和last是long防溢出
      */
-    public int getCount(int n, long first, long last) {
+    public int getCount(int n, int first, int last) {
         int num = 0;
         while (first <= n) {
             num += Math.min(last, n + 1) - first;
@@ -110,5 +111,6 @@ public class DictionarySortNumber {
         DictionarySortNumber dsn = new DictionarySortNumber();
         List<Integer> ans = dsn.lexicalOrderDfs(13);
         System.out.println(ans.toString());
+        System.out.println(dsn.findKthNumber(681692778, 351251360));
     }
 }
