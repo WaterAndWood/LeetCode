@@ -22,7 +22,7 @@ public class SingletonDemo {
         if (singletonDemo == null) {
             synchronized (SingletonDemo.class) {
                 if (singletonDemo == null) {
-                    return new SingletonDemo();
+                    singletonDemo = new SingletonDemo();
                 }
             }
         }
@@ -71,7 +71,7 @@ class SingletonDemo1 {
  */
 class SingletonDemo2 {
     private static class SingletonHolder {
-        private static final SingletonDemo2 INSTANCE = new SingletonDemo2();
+        private static SingletonDemo2 INSTANCE = new SingletonDemo2();
     }
 
     private SingletonDemo2() {}

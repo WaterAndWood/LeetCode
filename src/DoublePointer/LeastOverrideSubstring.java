@@ -21,7 +21,7 @@ public class LeastOverrideSubstring {
         Map<Character, Integer> tMap = new HashMap<>();
         for (int i = 0; i < t.length(); i++) {
             int count = tMap.getOrDefault(t.charAt(i), 0);
-            tMap.put(t.charAt(i), count);
+            tMap.put(t.charAt(i), count + 1);
         }
         // t覆盖时满足的条件数，即t中字符种类
         int required = tMap.size();
