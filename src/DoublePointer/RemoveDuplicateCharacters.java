@@ -32,10 +32,10 @@ public class RemoveDuplicateCharacters {
                 // 慢指针
                 int s = 0;
                 for (int f = 0; f < len; f++) {
-                    if (f > 1 && ch[f] == ch[s - 1] && ch[s - 1] == ch[s - 2]) {
+                    if (s > 1 && ch[f] == ch[s - 1] && ch[s - 1] == ch[s - 2]) {
                         // AAA模式，f = s = 第三个A
                         ch[f] = '\0';
-                    } else if (f > 2 && ch[f] == ch[s - 1] && ch[s - 2] == ch[s - 3]){
+                    } else if (s > 2 && ch[f] == ch[s - 1] && ch[s - 2] == ch[s - 3]){
                         // AABB模式，f = s = 第二个B
                         ch[f] = '\0';
                     } else {

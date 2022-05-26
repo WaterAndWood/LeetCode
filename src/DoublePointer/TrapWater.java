@@ -14,6 +14,7 @@ public class TrapWater {
     /**
      * 求出左边和右边最高墙，求当前列和其中较矮的墙之间的差值即为水的体积
      * 按列求值
+     * O(n^2)超时
      */
     public int trap1(int[] heights) {
         int sum = 0;
@@ -102,6 +103,12 @@ public class TrapWater {
             }
         }
         return sum;
+    }
+
+    public static void main(String[] args) {
+        TrapWater trapWater = new TrapWater();
+        int[] heights = {0,1,0,2,1,0,1,3,2,1,2,1};
+        System.out.println(trapWater.trap2(heights));
     }
 
 }

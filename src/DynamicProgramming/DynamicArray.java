@@ -15,40 +15,50 @@ import java.util.Arrays;
 public class DynamicArray {
 
     /**
-     * 最大连续子数组和：动态规划，记录最大子序的起始left，right位置
+     * 最大连续子数组和：动态规划
+     * dp[i] = dp[i-1]+nums[i], dp[i-1]>0
+     * dp[i] = nums[i], dp[i-1]<0
      */
     public int maxSubArray(int[] nums) {
         if (nums == null || nums.length == 0) {
             return 0;
         }
-        int l = 0, r = 0;
-        int left = 0, right = 0;
-        /**
-         * 一维数组简化为一个变量，pre表示前一个状态
-         * dp[i] = max(dp[i-1]+nums[i], nums[i])
-         */
-        int pre = nums[0];
-        int ans = pre;
-        for (int i = 1; i < nums.length; i++) {
-            // pre = Math.max(pre + nums[i], nums[i]);
-            if (pre + nums[i] > nums[i]) {
+        int len = nums.length;
+        // dp[i]表示以nums[i]结尾的连续子数组的最大和
+        int[] dp = new int[len];
+        dp[0] = nums[0];
+        int res = dp[0];
+        for (int i = 1; i < len; i++) {
+            if (dp[i-1] > 0) {
+                dp[i] = dp[i-1] + nums[i];
+            } else {
+                dp[i] = nums[i];
+            }
+            res = Math.max(res, dp[i]);
+        }
+        return res;
+    }
+
+    /**
+     * 空间进行优化，使用变量代替数组
+     */
+    public int maxSubArray2(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        int len = nums.length;
+        int res = nums[0], pre = 0;
+        for (int i = 0; i < len; i++) {
+            if (pre > 0) {
                 pre = pre + nums[i];
-                r = i;
             } else {
                 pre = nums[i];
-                l = r = i;
             }
-            // ans = Math.max(ans, pre);
-            if (ans < pre) {
-                ans = pre;
-                left = l;
-                right = r;
-                l = i;
-            }
+            res = Math.max(pre, res);
         }
-        System.out.println(left + String.valueOf(right));
-        return ans;
+        return res;
     }
+
 
     /**
      * 最长上升子序列
