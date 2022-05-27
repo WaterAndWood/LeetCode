@@ -16,7 +16,7 @@ public class NumSquares {
         for (int i = 1; i <= n; i++) {
             // 组成dp[i]全是1，个数最大
             dp[i] = i;
-            for (int j = 1; i - j * j >= 0; j++) {
+            for (int j = 1; j * j <= i; j++) {
                 // 状态转移方程
                 dp[i] = Math.min(dp[i], dp[i - j * j] + 1);
             }

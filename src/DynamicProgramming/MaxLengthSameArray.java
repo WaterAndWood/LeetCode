@@ -58,16 +58,20 @@ public class MaxLengthSameArray {
     }
 
     /**
-     * 动态规划：dp[i][j]表示A[i:]和B[j:]的最长公共前缀。
-     * 如果A[i] == B[j], dp[i][j] = dp[i+1][j+1] + 1，否则dp[i][j] = 0
+     * 动态规划：
+     * dp[i][j] ：长度为i，末尾项为A[i-1]的子数组，与长度为j，末尾项为B[j-1]的子数组，二者的最大公共后缀子数组长度。
+     * 如果 A[i-1] != B[j-1]， 有 dp[i][j] = 0
+     * 如果 A[i-1] == B[j-1] ， 有 dp[i][j] = dp[i-1][j-1] + 1
      */
     public int findLength2(int[] a, int[] b) {
         int aLen = a.length, bLen = b.length;
         int[][] dp = new int[aLen + 1][bLen + 1];
         int ans = 0;
-        for (int i = aLen - 1; i >= 0; i--) {
-            for (int j = bLen - 1; j >= 0; j--) {
-                dp[i][j] = a[i] == b[j] ? dp[i + 1][j + 1] + 1: 0;
+        for (int i = 1; i <= aLen; i++) {
+            for (int j = 1; j <= bLen; j++) {
+                if (a[i - 1] == b[j - 1]) {
+                    dp[i][j] = dp[i - 1][j - 1] + 1;
+                }
                 ans = Math.max(ans, dp[i][j]);
             }
         }

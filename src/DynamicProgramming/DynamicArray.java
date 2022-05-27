@@ -63,18 +63,22 @@ public class DynamicArray {
     /**
      * 最长上升子序列
      * 子数组要求必须连续，子序列不一定连续
-     * dp[i] 的值代表 nums 前 i 个数字的最长子序列长度
-     * dp[i] = max(dp[i], dp[j] + 1) for j in [0, i)
+     * dp[i] 表示nums[i]结尾的上升子序列长度，nums[i]是必须被选中的且是子序列的最后一个元素
+     * dp[i] = max(dp[i], (dp[j] + 1 (for j in [0, i]))) ，表示nums[i]严格大于在它位置之前的某个数
      * 计算dp[i]需要遍历i之前的元素，如果nums[i]大于nums[j]，子序列长度为dp[j]+1
      */
     public int lengthOfLIS(int[] nums) {
         if (nums == null || nums.length == 0) {
             return 0;
         }
+        int len = nums.length;
+        if (len < 2) {
+            return len;
+        }
         int[] dp = new int[nums.length];
         Arrays.fill(dp, 1);
-        int res = 0;
-        for (int i = 0; i < nums.length; i++) {
+        int res = Integer.MIN_VALUE;
+        for (int i = 1; i < nums.length; i++) {
             /**
              * 遍历i之前的数组
              */

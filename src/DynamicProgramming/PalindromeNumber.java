@@ -28,4 +28,34 @@ public class PalindromeNumber {
         }
         return ans;
     }
+
+    // 转移方程拆分表示
+    public int countSubStrings2(String s) {
+        if (s == null || s.length() == 0) {
+            return 0;
+        }
+        int len = s.length();
+        boolean[][] dp = new boolean[len][len];
+
+        int count = 0;
+        // 只算上三角部分
+        for (int j = 0; j < len; j++) {
+            for (int i = 0; i <= j; i++) {
+                if(i == j) {
+                    // 单个字符
+                    dp[i][j] = true;
+                    count++;
+                } else if (j - i == 1 && s.charAt(i) == s.charAt(j)) {
+                    // 相邻字符而且字符相同
+                    dp[i][j] = true;
+                    count++;
+                } else if (j - i > 1 && s.charAt(i) == s.charAt(j) && dp[i+1][j-1]) {
+                    // 需要靠dp[i+1][j-1]决定
+                    dp[i][j] = true;
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
 }

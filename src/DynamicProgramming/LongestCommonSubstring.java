@@ -4,7 +4,8 @@ package DynamicProgramming;
  *
  * LeetCode 1143: 最长公共子串
  * 二维动态规划：
- * dp[i][j] = dp[i-1][j-1] + 1(s1[i] == s2[j])
+ * dp[i][j]表示text1[0:i-1]和text2[0:j-1]的最长公共子序列长度
+ * dp[i][j] = dp[i-1][j-1] + 1(s1[i-1] == s2[j-1])
  * 否则 dp[i][j] = max(dp[i-1][j], dp[i][j-1])
  * @author Richa
  * @date 2020/8/2 10:35
@@ -21,6 +22,7 @@ public class LongestCommonSubstring {
         /**
          * base case: dp[0][...] = 0, dp[...][0] = 0
          * 表示其中一个字符串是”“
+         * text1或者text2为空，空字符串和任何字符串的最长公共子序列长度都是0
          */
         for (int i = 1; i <= len1; i++) {
             for (int j = 1; j <= len2; j++) {
