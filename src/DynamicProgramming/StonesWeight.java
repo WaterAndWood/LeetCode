@@ -22,7 +22,7 @@ public class StonesWeight {
         System.out.println(ans);
     }
     /**
-     * 0-1背包dp[i][w]定义：前i个商品，当容量为w时，dp[i][w]
+     * 0-1背包dp[i][w]定义：前i个商品，当容量为w时，最大价值dp[i][w]
      * dp[i][j]定义：前i个石头，当容量为j时，最大重量dp[i][j]
      */
     public static int lastStoneWeight(int[] stones) {

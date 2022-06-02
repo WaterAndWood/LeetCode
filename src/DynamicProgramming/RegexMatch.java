@@ -46,14 +46,20 @@ public class RegexMatch {
                     if (p.charAt(j - 1) != '*') {
                         if (i > 0 && (s.charAt(i - 1) == p.charAt(j - 1) || p.charAt(j - 1) == '.')) {
                             dp[i][j] = dp[i - 1][j - 1];
-                        } else {
-                            // *的两种情况：*不匹配s中的字符或者匹配字符
-                            if (j >= 2) {
-                                dp[i][j] |= dp[i][j - 2];
-                            }
-                            if (i >= 1 && j >= 2 && (s.charAt(i - 1) == p.charAt(j - 2) || p.charAt(j - 2) == '.')) {
-                                dp[i][j] |= dp[i - 1][j];
-                            }
+                        }
+                    } else {
+                        /**
+                         * *的两种情况：*不匹配s中的字符或者匹配字符
+                         * p[j-2]*次数视为0
+                         */
+                        if (j >= 2) {
+                            dp[i][j] |= dp[i][j - 2];
+                        }
+                        /**
+                         * s[i-1] = p[j-2], p[j-2]多出现1次
+                         */
+                        if (i >= 1 && j >= 2 && (s.charAt(i - 1) == p.charAt(j - 2) || p.charAt(j - 2) == '.')) {
+                            dp[i][j] |= dp[i - 1][j];
                         }
                     }
                 }
