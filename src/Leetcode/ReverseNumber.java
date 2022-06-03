@@ -16,15 +16,19 @@ public class ReverseNumber {
             /**
              * 判断是否越界
              */
-            if ((ans > Integer.MAX_VALUE / 10) || (ans == Integer.MAX_VALUE / 10 && pop > 7)) {
+            if ((ans > Integer.MAX_VALUE / 10) || (ans == Integer.MAX_VALUE / 10 && pop > Integer.MAX_VALUE % 10)) {
                 return 0;
             }
-            if ((ans < Integer.MIN_VALUE / 10) || (ans == Integer.MIN_VALUE / 10 && pop < -8)) {
+            if ((ans < Integer.MIN_VALUE / 10) || (ans == Integer.MIN_VALUE / 10 && pop > -(Integer.MIN_VALUE % 10))) {
                 return 0;
             }
             ans = ans * 10 + pop;
             x /= 10;
         }
         return ans;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(Integer.MIN_VALUE %10);
     }
 }
