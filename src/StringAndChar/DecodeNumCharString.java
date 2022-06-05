@@ -1,5 +1,6 @@
 package StringAndChar;
 
+import java.util.Deque;
 import java.util.LinkedList;
 
 /**
@@ -17,25 +18,25 @@ public class DecodeNumCharString {
         StringBuilder res = new StringBuilder();
 
         int multi = 0;
-        LinkedList<Integer> multiStack = new LinkedList<>();
-        LinkedList<String> stringStack = new LinkedList<>();
+        Deque<Integer> multiStack = new LinkedList<>();
+        Deque<String> stringStack = new LinkedList<>();
         for (Character ch : s.toCharArray()) {
             // 表示进入下一层，本层的数字作为下一层的乘积，本层的字符串在下一层计算完成后作为前缀
             if (ch == '[') {
-                multiStack.addLast(multi);
-                stringStack.add(res.toString());
+                multiStack.push(multi);
+                stringStack.push(res.toString());
                 multi = 0;
                 res = new StringBuilder();
             } else if (ch == ']') {
                 // 乘法当前层的字符串：multi * [...]
                 StringBuilder temp = new StringBuilder();
-                int curMulti = multiStack.pollLast();
+                int curMulti = multiStack.pop();
                 while (curMulti-- > 0) {
                     temp.append(res);
                 }
-                res = new StringBuilder(stringStack.pollLast() + temp);
+                res = new StringBuilder(stringStack.pop() + temp);
             } else if (Character.isDigit(ch)) {
-                multi = multi * 10 + Integer.parseInt(String.valueOf(ch));
+                multi = multi * 10 + (ch - '0');
             } else {
                 res.append(ch);
             }

@@ -26,8 +26,8 @@ public class CuttingRope {
         dp[2] = 2;
         dp[3] = 3;
         int max = 0;
-        for (int i = 4; i < n; i++) {
-            for (int j = 1; j < n / 2; j++) {
+        for (int i = 4; i <= n; i++) {
+            for (int j = 1; j <= i / 2; j++) {
                 max = Math.max(max, dp[j] * dp[i - j]);
                 dp[i] = max;
             }

@@ -16,6 +16,9 @@ import java.util.Deque;
  */
 public class RectangleArea {
 
+    /**
+     * O(n^2)时间复杂度，超时
+     */
     public int largestArea1(int[] height) {
         if (height == null || height.length == 0) {
             return 0;

@@ -20,7 +20,7 @@ public class Codec {
             return "";
         }
         StringBuilder res = new StringBuilder();
-        res.append("[");
+
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
         while (!queue.isEmpty()) {
@@ -34,7 +34,7 @@ public class Codec {
             }
             res.append(",");
         }
-        res.append("]");
+
         return res.toString();
     }
 
@@ -43,7 +43,7 @@ public class Codec {
             return null;
         }
 
-        String[] dataList = data.substring(1, data.length() - 1).split(",");
+        String[] dataList = data.split(",");
         TreeNode root = new TreeNode(Integer.parseInt(dataList[0]));
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);

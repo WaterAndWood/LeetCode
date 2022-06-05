@@ -19,7 +19,7 @@ import java.util.*;
  */
 public class MaxScoreInClass {
     /**
-     * 求班级同学每道题公共答案最多的选项并乘以分值就是最大分数
+     * 求班级同学每道题公共答案最多的选项的个数并乘以分值就是最大分数
      *
      */
     public static void main(String[] args) {

@@ -11,7 +11,7 @@ import java.util.Scanner;
  * 子数组的和可以用前缀和数组某两个元素的差来计算：A[i]+A[i+1]+...A[j] = B[j]-B[i-1]
  * 如果固定住结尾B[j]，想要A[i]+A[i+1]+...A[j]=k，那么一定有B[i-1]=B[j]-k
  *
- * LeetCode 5471: 和为目标值的最大数目不重叠非空子数组数目
+ * LeetCode 1546: 和为目标值的最大数目不重叠非空子数组数目
  *
  * 牛客网：病毒检测
  * 检查连续子串中1的个数。如果子串内容相同，但是开始或者结束位置不一样，则被认为是不同的子串。
@@ -42,12 +42,33 @@ public class SubArraySum {
         return count;
     }
 
+    public int subArraySum2(int[] nums, int k) {
+        int len = nums.length;
+        int[] preSum = new int[len + 1];
+        preSum[0] = 0;
+        // 构造前缀和数组
+        for (int i = 0; i < len; i++) {
+            preSum[i + 1] = preSum[i] + nums[i];
+        }
+        int count = 0;
+        for (int left = 0; left < len; left++) {
+            for (int right = left; right < len; right++) {
+                if (preSum[right + 1] - preSum[left] == k) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
     /**
      * 前缀和加哈希表优化
      *
      */
-    public int subArraySum2(int[] nums, int k) {
+    public int subArraySum3(int[] nums, int k) {
+        // key：前缀和，value：key 对应的前缀和的个数
         Map<Integer, Integer> preSumMap = new HashMap<>();
+        // 对于下标为 0 的元素，前缀和为 0，个数为 1
         preSumMap.put(0, 1);
         int count = 0;
         int preSum = 0;
