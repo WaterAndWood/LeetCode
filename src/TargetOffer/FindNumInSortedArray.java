@@ -50,7 +50,7 @@ public class FindNumInSortedArray {
             }
         }
         int left = j;
-        return right - left + 1;
+        return right - left - 1;
     }
 
     /**

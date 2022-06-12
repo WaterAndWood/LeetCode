@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /**
  *
- * Offer：调整数组顺序使奇数位于偶数前面
+ * Offer21：调整数组顺序使奇数位于偶数前面
  * 双指针 + 可扩展（类似策略模式）
  *
  * @author Richa

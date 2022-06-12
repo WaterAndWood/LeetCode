@@ -7,7 +7,7 @@ import java.util.Set;
 
 /**
  *
- * Offer48: 最长子字符串
+ * Offer48: 最长不含重复字符的子字符串
  *
  * @author Richa
  * @date 2022/4/5 15:49

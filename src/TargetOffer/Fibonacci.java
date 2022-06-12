@@ -16,7 +16,10 @@ public class Fibonacci {
      * 递归，时间复杂度O(2^n)
      */
     public int fibonacci1(int n) {
-        if (n <= 1) {
+        if (n <= 0) {
+            return 0;
+        }
+        if (n == 1) {
             return 1;
         }
         return fibonacci1(n - 1) + fibonacci1(n - 2);
@@ -30,14 +33,13 @@ public class Fibonacci {
         if (n <= 1) {
             return n;
         }
-        int a = 0, b = 1;
+        int minusOne = 1, minusTwo = 0, sum = 0;
         for (int i = 2; i <= n; i++) {
-            int c = a + b;
-            c %= mod;
-            a = b;
-            b = c;
+            sum = (minusOne + minusTwo) % mod;
+            minusTwo = minusOne;
+            minusOne = sum;
         }
-        return b;
+        return sum;
     }
 
     /**

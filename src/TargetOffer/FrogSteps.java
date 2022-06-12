@@ -30,15 +30,17 @@ public class FrogSteps {
      * 优化空间
      */
     public int numWays2(int n) {
-        if (n == 0) {
+        if (n <= 1) {
             return 1;
         }
-        int cur = 1, next = 1;
-        for (int i = 0; i < n; i++) {
-            int temp = (cur + next) % 1000000007;
-            cur = next;
-            next = temp;
+        int minusTwo = 1;
+        int minusOne = 1;
+        int sum = 0;
+        for (int i = 2; i <= n; i++) {
+            sum = (minusOne + minusTwo) % 1000000007;
+            minusTwo = minusOne;
+            minusOne = sum;
         }
-        return cur;
+        return sum;
     }
 }

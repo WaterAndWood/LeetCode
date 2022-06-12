@@ -44,6 +44,7 @@ public class StringToInt {
             }
             res = 10 * res + (c[j] - '0');
         }
+
         return sign * res;
     }
 }
