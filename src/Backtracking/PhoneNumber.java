@@ -44,7 +44,6 @@ public class PhoneNumber {
                 char letter = number.charAt(i);
                 sb.append(letter);
                 traceBack(sb, digits.substring(1), ans);
-                int len = sb.length();
                 // 回溯，删除之前加入的letter
                 sb.deleteCharAt(sb.length() - 1);
             }
